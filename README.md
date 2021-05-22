@@ -16,7 +16,7 @@
 
 > Since you used the spring-boot-starter-parent POM, you have a useful run goal that you can use to start the application
 
-## Creating an Executable Jar (sometimes called “fat jars”)
+### Creating an Executable Jar (sometimes called “fat jars”)
 
 * mvn package
 
@@ -37,8 +37,79 @@
 
 > If you want to peek inside the content of the builded jar file, you can use jar tvf
 
+## Build systems using Spring Boot
+
+### Dependency Management
+
+* Maven
+  * [Spring Boot Maven Plugin Documentation](https://docs.spring.io/spring-boot/docs/2.5.0/maven-plugin/reference/htmlsingle/#?.?)
+
+* Gradle
+
+### spring-boot-starter
+
+> Starters are a set of convenient dependency descriptors that you can include in your application
+
+* [The following application starters are provided by Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters)
+
+### Main class
+
+* @SpringBootApplication
+  * @EnableAutoConfiguration: enable [Spring Boot’s auto-configuration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration)
+  * @ComponentScan: enable @Component scan on the package where the application is located
+  * @Configuration: allow to register extra beans in the context or import additional configuration classes
+  > 是個複合annotaion 其中包含了 @Configuration and @EnableAutoConfiguration and @ComponentScan annotations
+
+  ```JAVA
+  @SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+  public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+  }
+  ```
+
+> If you structure your code as suggested above (locating your application main class in a top package), you can add **@ComponentScan** without any arguments or use the **@SpringBootApplication** annotation which implicitly includes it. All of your application components (@Component, @Service, @Repository, @Controller etc.) are automatically registered as Spring Beans
+
+## Spring Boot Features
+
+### SpringApplication
+
+#### Startup
+
+* Startup information logging can be turned off by setting **spring.main.log-startup-info** to false. This will also turn off logging of the application’s active profiles
+
+* **java -jar** myproject-0.0.1-SNAPSHOT.jar **--debug** could open debug mode
+
+#### Lazy Initialization
+
+> When lazy initialization is enabled, beans are created as they are needed rather than during application startup, lazy initialization is **not enabled by default**.
+
+* 優點
+  1. reduce the time that it takes your application to start
+
+* 缺點
+  1. delay the discovery of a problem with the application
+  2. 必須考慮到JVM has sufficient memory to accommodate all of the application’s beans
+
+> Lazy initialization can be enabled programmatically using the lazyInitialization method on SpringApplicationBuilder or the setLazyInitialization method on SpringApplication or properties
+
+```PROPERTIES
+spring.main.lazy-initialization=true
+```
+
+> **Tip** If you want to disable lazy initialization for certain beans while using lazy initialization for the rest of the application, you can explicitly set their lazy attribute to false using the **@Lazy(false)** annotation
+
 ## 待補齊知識
 
 * [Introduction to Servlets and Servlet Containers](https://www.baeldung.com/java-servlets-containers-intro)
 
-* @EnableAutoConfiguration
+* @Configuration, @ConfigurationProperties, @PropertySource, @ImportResource 之間的差異與使用時機
+
+* Get deeper into @EnableAutoConfiguration [Spring Boot’s auto-configuration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration)
+
+* [Spring Boot Maven Plugin](https://docs.spring.io/spring-boot/docs/2.5.0/maven-plugin/reference/htmlsingle/#?.?)
+
+* [Spring Boot Actuator: Production-ready Features](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.enabling)
+
+* JVM hot-swapping
