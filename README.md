@@ -54,11 +54,12 @@
 
 ### Main class
 
-* @SpringBootApplication
-  * @EnableAutoConfiguration: enable [Spring Boot’s auto-configuration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration)
+* @SpringBootApplication: 是個複合annotaion包含了 @Configuration and @EnableAutoConfiguration and @ComponentScan annotations
+
+  * @EnableAutoConfiguration: enable [Spring Boot’s auto-configuration mechanism](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration). Tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings. For example, if spring-webmvc is on the classpath, this annotation flags the application as a web application and activates key behaviors, such as setting up a DispatcherServlet.
+
   * @ComponentScan: enable @Component scan on the package where the application is located
   * @Configuration: allow to register extra beans in the context or import additional configuration classes
-  > 是個複合annotaion 其中包含了 @Configuration and @EnableAutoConfiguration and @ComponentScan annotations
 
   ```JAVA
   @SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
@@ -99,6 +100,24 @@ spring.main.lazy-initialization=true
 ```
 
 > **Tip** If you want to disable lazy initialization for certain beans while using lazy initialization for the rest of the application, you can explicitly set their lazy attribute to false using the **@Lazy(false)** annotation
+
+## Spring Guides Practice
+
+### Building a RESTful Web Service
+
+* @RestController
+
+> @RestController annotation, which marks the class as a controller where **every method returns a domain object instead of a view**. It is shorthand for including both @Controller and @ResponseBody
+
+#### 傳統MVC controller return a view
+
+#### RESTful controller return a object data
+
+> A key difference between a traditional MVC controller and the RESTful web service controller shown earlier is the way that the HTTP response body is created. Rather than relying on a view technology to perform server-side rendering of the greeting data to HTML, this **RESTful web service controller populates and returns a object. The object data will be written directly to the HTTP response as JSON**
+
+#### Spring會自動將Object轉成JSON格式
+
+> A plain old Java object must be converted to JSON. Thanks to Spring’s HTTP message converter support, you need not do this conversion manually. **Because Jackson 2 is on the classpath, Spring’s MappingJackson2HttpMessageConverter is automatically chosen to convert the Greeting instance to JSON**
 
 ## 待補齊知識
 
