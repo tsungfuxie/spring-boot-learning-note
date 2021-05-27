@@ -107,7 +107,7 @@ spring.main.lazy-initialization=true
 
 * @RestController
 
-> @RestController annotation, which marks the class as a controller where **every method returns a domain object instead of a view**. It is shorthand for including both @Controller and @ResponseBody
+> **@RestController** annotation, which marks the class as a controller where **every method returns a domain object instead of a view**. It is shorthand for **including both @Controller and @ResponseBody**
 
 #### 傳統MVC controller return a view
 
@@ -132,3 +132,5 @@ spring.main.lazy-initialization=true
 * [Spring Boot Actuator: Production-ready Features](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.enabling)
 
 * JVM hot-swapping
+
+* [Task Execution and Scheduling](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#scheduling)
