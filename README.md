@@ -134,3 +134,5 @@ spring.main.lazy-initialization=true
 * JVM hot-swapping
 
 * [Task Execution and Scheduling](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#scheduling)
+
+* [Srping Core Technologies](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
