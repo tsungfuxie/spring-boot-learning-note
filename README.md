@@ -136,3 +136,5 @@ spring.main.lazy-initialization=true
 * [Task Execution and Scheduling](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#scheduling)
 
 * [Srping Core Technologies](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#spring-core)
+
+* [@RepositoryRestResource 基礎/進階用法study](https://spring.io/guides/gs/accessing-data-rest/)

@@ -16,6 +16,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+/*
+ * MockMvc comes from Spring Test and lets you, through a set of convenient builder classes, 
+ * send HTTP requests into the DispatcherServlet and make assertions about the result. 
+ * Note the use of @AutoConfigureMockMvc and @SpringBootTest to inject a MockMvc instance. 
+ * Having used @SpringBootTest, we are asking for the whole application context to be created.
+ */
 
 @SpringBootTest
 @AutoConfigureMockMvc

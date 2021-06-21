@@ -1,4 +1,4 @@
-package person.tsungfuxie.springguidesconsumingrest;
+package person.tsungfuxie.springguidesconsumingrest.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
